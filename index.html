@@ -214,13 +214,19 @@
     .app-icon {
       width: 56px;
       height: 56px;
-      background: linear-gradient(135deg, var(--accent2), var(--accent));
       border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
+    }
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 14px;
     }
     .app-info { display: grid; gap: 8px; }
     .app-name {
@@ -237,7 +243,7 @@
       font-size: .7rem;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--accent2);
+      color: var(--accent);
       margin-top: 4px;
     }
     .app-status::before {
@@ -245,9 +251,44 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--accent2);
+      background: var(--accent);
       animation: pulse 2s infinite;
     }
+    .app-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .app-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 6px;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      transition: opacity .2s, transform .2s;
+    }
+    .app-link:hover { opacity: .85; transform: translateY(-2px); }
+    .app-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .app-link--play {
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color: #080b0f;
+      fill: #080b0f;
+    }
+    .app-link--play svg { fill: #080b0f; }
+    .app-link--github {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      fill: var(--muted);
+    }
+    .app-link--github svg { fill: var(--muted); }
+    .app-link--github:hover { border-color: var(--accent); color: var(--text); }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50%       { opacity: .3; }
@@ -365,13 +406,23 @@
     <section id="apps">
       <div class="section-label">Apps</div>
       <div class="app-card">
-        <div class="app-icon">🚗</div>
+        <div class="app-icon"><img src="./assets/apps/ruta-placa.png" alt="RutaPlaca" /></div>
         <div class="app-info">
           <div class="app-name">RutaPlaca</div>
           <p class="app-desc">
             Consulta el pico y placa de tu vehículo en las principales ciudades de Colombia. Notificaciones inteligentes, widgets y soporte para múltiples vehículos.
           </p>
-          <div class="app-status">Próximamente en Google Play</div>
+          <div class="app-status">Disponible en Google Play</div>
+          <div class="app-links">
+            <a class="app-link app-link--play" href="https://play.google.com/store/apps/details?id=com.pablobricenodev.ruta_placa&pcampaignid=web_share" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.24.97.21L14.6 12 11 8.4 3.18 23.76zm17.14-10.12-3.03-1.75-3.9 3.9 3.9 3.9 3.05-1.76a1.74 1.74 0 0 0 0-3.04l-.02-.25zM2.1.48A1.74 1.74 0 0 0 1.75 1.3v21.4c0 .3.07.57.2.8L13.4 12 2.1.48zm9.5 10.83L15.25 7.7 4.15.24A1.74 1.74 0 0 0 3.18.02L11.6 11.31z"/></svg>
+              Google Play
+            </a>
+            <a class="app-link app-link--github" href="https://github.com/pablo-briceno-dev/ruta-placa-app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              Ver código
+            </a>
+          </div>
         </div>
       </div>
     </section>
